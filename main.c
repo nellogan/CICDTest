@@ -30,6 +30,6 @@ int main(void)
 
 //    printf("hello from main.c, returning 3...!987\n");
 //    return 3; // Will trigger failure.
-    printf("hello from main.c, ...!XYZ!\n");
+    printf("hello from main.c, ...!XYZ123!\n");
     return 0;
 }
