@@ -8,7 +8,8 @@ void add_test(void)
     int b = 5;
     int res = add(a,b);
     int check = a+b;
-    assert( a == b );
+    printf("add_test: res %d, check %d\n", res, check);
+    assert( res == check );
 }
 
 void mul_test(void)
@@ -17,7 +18,8 @@ void mul_test(void)
     int b = 5;
     int res = mul(a,b);
     int check = a*b;
-    assert( a == b );
+    printf("mul_test: res %d, check %d\n", res, check);
+    assert( res == check );
 }
 
 
