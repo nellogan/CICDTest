@@ -38,4 +38,4 @@ jobs:
           name: main_exe-artifact
 
       - name: Grant execution privilege and run test
-        run: ./main_exe
+        run: chmod 770 ./main_exe && ./main_exe
