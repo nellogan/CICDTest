@@ -10,8 +10,21 @@ jobs:
       - name: Install dependencies
         run: sudo apt-get install -y gcc
 
-      - name: Build
-        run: gcc main.c -o main_exe
+      - name: Build functions.o
+        run: gcc -I. -c functions.c -o functions.o
 
-      - name: Run application
-        run: ./main_exe
+      - name: Build main.o
+        run: gcc -I. -c main.c -o main.o
+
+      - name: Build executable
+        run: gcc -I. functions.o main.o -o main_exe
+
+    test:
+      needs: build
+      runs-on: ubuntu-latest
+      steps:
+        - name: checkout repo
+          uses: actions/checkout@v3
+
+        - name: Run test
+          run: ./main_exe
