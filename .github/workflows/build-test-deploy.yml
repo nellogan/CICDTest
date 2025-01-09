@@ -19,13 +19,23 @@ jobs:
       - name: Build executable
         run: gcc -I. functions.o main.o -o main_exe
 
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: main_exe-artifact
+          path: main_exe
+
   test:
     needs: build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/cache/restore@v3
       - name: checkout repo
         uses: actions/checkout@v3
+
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: main_exe-artifact
 
       - name: Run test
         run: ./main_exe
