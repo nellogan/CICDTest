@@ -1,5 +1,9 @@
 name: build-test-deploy
-on: push pull
+on:
+  pull_request:
+    branches: [ "main" ]
+  push_request:
+    branches: [ "main" ]
 jobs:
   build:
     runs-on: ubuntu-latest
