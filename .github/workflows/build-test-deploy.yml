@@ -19,12 +19,12 @@ jobs:
       - name: Build executable
         run: gcc -I. functions.o main.o -o main_exe
 
-    test:
-      needs: build
-      runs-on: ubuntu-latest
-      steps:
-        - name: checkout repo
-          uses: actions/checkout@v3
+  test:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
 
-        - name: Run test
-          run: ./main_exe
+      - name: Run test
+        run: ./main_exe
