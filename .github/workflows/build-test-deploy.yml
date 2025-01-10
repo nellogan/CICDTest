@@ -16,15 +16,9 @@ jobs:
     steps:
     - name: Check that workflows have not been changed
       run: echo prelim placeholder
-#      run: |
-#        WORKFLOWS_SAME=$(git diff HEAD^ HEAD --name-only -- .github/workflows/  | wc -m)
-#        if [ "$WORKFLOWS_SAME" -ne 0 ]
-#        then
-#            exit 1
-#        fi
 
   build:
-#    needs: preliminary-check
+    needs: preliminary-check
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
