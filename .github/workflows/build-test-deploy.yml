@@ -85,6 +85,7 @@ jobs:
               });
             }
       - name: 'Approve PR'
+        permissions: write-all
         uses: actions/github-script@v6
         with:
           script: |
@@ -107,3 +108,4 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
+            console.log('\n\n\n mergePR:', mergePR);
