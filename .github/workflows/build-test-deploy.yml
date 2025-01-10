@@ -39,3 +39,30 @@ jobs:
 
       - name: Grant execution privilege and run test
         run: chmod 770 ./main_exe && ./main_exe
+
+  deploy:
+    runs-on: ubuntu-latest
+    if: ${{ github.actor == 'dependabot[bot]' }}
+    steps:
+      - name: Dependabot metadata
+        id: metadata
+        uses: dependabot/fetch-metadata
+        with:
+          github-token: "${{ secrets.CICDTest }}"
+          skip-commit-verification: true
+
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Approve a PR if not already approved
+        run: |
+          gh pr checkout "$PR_URL"
+            if [ "$(gh pr status --json reviewDecision -q .currentBranch.reviewDecision)" != "APPROVED" ];
+          then
+            gh pr review --approve "$PR_URL"
+          else
+            echo "PR already approved.";
+          fi
+        env:
+          PR_URL: ${{github.event.pull_request.html_url}}
+          GITHUB_TOKEN: ${{secrets.CICDTest}}
