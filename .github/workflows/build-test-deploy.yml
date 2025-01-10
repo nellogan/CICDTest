@@ -79,21 +79,3 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
-
-
-#  zebra:
-#    runs-on: ubuntu-latest
-#    steps:
-#      - name: Check that workflows have not been changed
-#        run: echo prelim placeholder
-
-
-# Automatically run CICD pipeline when pull request to main is opened or edited.
-# CRITICAL: Check that the feature branch of the pull request does not make any changes to main's workflows
-# (preliminary check) unless changed by owner.
-# Enforce checks set in author/repo -> settings -> rules -> rulesets -> status checks. If checks fail, merge is
-# disabled. If pull request is from owner (or trusted members), automatically merge feature branch into main.
-# Todo specify trusted members instead of only owner.
-
-
-# todo trusted members instead of only owner.
