@@ -63,7 +63,6 @@ jobs:
               base: 'main',
               state: 'open',
             });
-            console.log("\n\n\nTHIS SHOULD NOT PRINT! 5555555555\n\n\n");
             if (pulls.data.length < 1) {
               await github.rest.pulls.create({
                 title: '[CI] Merge beta into main',
@@ -102,8 +101,6 @@ jobs:
               state: 'open',
             });
             const existing_pr = pulls.data[0];
-            console.log('pulls.data:', pulls.data);
-            console.log('existing_pr data:', existing_pr);
             const mergePR = await github.rest.pulls.merge({
               owner: owner,
               repo: repo,
@@ -112,4 +109,6 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
-            console.log('\n\n\n mergePR:', mergePR);
+#            console.log('pulls.data:', pulls.data);
+#            console.log('existing_pr data:', existing_pr);
+#            console.log('\n\n\n mergePR:', mergePR);
