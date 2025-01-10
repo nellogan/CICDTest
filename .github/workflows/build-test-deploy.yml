@@ -46,9 +46,20 @@ jobs:
     runs-on: ubuntu-latest
 #    permissions: write-all
     permissions:
+      actions: write
+      attestations: write
+      checks: write
+      contents: write
+      deployments: write
+      id-token: write
+      issues: write
+      discussions: write
+      packages: write
+      pages: write
       pull-requests: write
       repository-projects: write
-      contents: write
+      security-events: write
+      statuses: write
     steps:
       - name: 'Create PR'
         uses: actions/github-script@v6
