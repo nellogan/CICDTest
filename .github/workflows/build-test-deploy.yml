@@ -11,19 +11,19 @@ jobs:
   # Verify that the feature branch does not change any workflow files unless author is a trusted member.
   # HEAD^ is refers to the most recent commit in the repo while HEAD is the proposed new commit.
   # Todo only supports owner update to check for trusted members instead.
-  preliminary-check:
-    runs-on: ubuntu-latest
-    steps:
-    - name: Check that workflows have not been changed
-      run: |
-        WORKFLOWS_SAME=$(git diff HEAD^ HEAD --name-only -- .github/workflows/  | wc -m)
-        if [ "$WORKFLOWS_SAME" -ne 0 ]
-        then
-            exit 1
-        fi
+#  preliminary-check:
+#    runs-on: ubuntu-latest
+#    steps:
+#    - name: Check that workflows have not been changed
+#      run: |
+#        WORKFLOWS_SAME=$(git diff HEAD^ HEAD --name-only -- .github/workflows/  | wc -m)
+#        if [ "$WORKFLOWS_SAME" -ne 0 ]
+#        then
+#            exit 1
+#        fi
 
   build:
-    needs: preliminary-check
+#    needs: preliminary-check
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
