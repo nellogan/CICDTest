@@ -44,7 +44,11 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    permissions: write-all
+#    permissions: write-all
+    permissions:
+      pull-requests: write
+      repository-projects: write
+      contents: write
     steps:
       - name: 'Create PR'
         uses: actions/github-script@v6
