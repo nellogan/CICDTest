@@ -28,8 +28,8 @@ int main(void)
     add_test();
     mul_test();
 
-    printf("hello from main.c, returning 3...!333 13th time returning 0!\n");
+//    printf("hello from main.c, returning 3...0!\n");
 //    return 3; // Will trigger failure.
-//    printf("hello from main.c, ...!ZZZ!\n");
+    printf("hello from main.c, 1\n");
     return 0;
 }
