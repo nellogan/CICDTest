@@ -1,11 +1,9 @@
 name: auto-pull-request
 
 on:
-  push:
-    branches:
-      - '!main' # excludes main
+  push
 
-# Automatically open a pull request when owner pushes a new branch. Todo check for members instead of only owner.
+# Automatically open a pull request when owner pushes. Todo check for members instead of only owner.
 jobs:
   open-pull-request:
     runs-on: ubuntu-latest
