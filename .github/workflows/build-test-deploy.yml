@@ -18,7 +18,6 @@ jobs:
         run: echo prelim placeholder
 
   build:
-#    needs: preliminary
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
