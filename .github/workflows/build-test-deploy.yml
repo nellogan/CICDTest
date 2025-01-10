@@ -42,7 +42,7 @@ jobs:
         run: chmod 770 ./main_exe && ./main_exe
 
   deploy:
-#    needs: test
+    needs: test
     runs-on: ubuntu-latest
 #    permissions: write-all
     permissions:
