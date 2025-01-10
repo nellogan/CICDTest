@@ -44,27 +44,14 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: ${{ github.actor == github.repository_owner }}
     steps:
-      - name: Dependabot metadata
-        id: metadata
-        uses: dependabot/fetch-metadata@v2
-        with:
-          github-token: "${{ secrets.CICDTest }}"
-          skip-commit-verification: true
-
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Approve a PR if not already approved
-        run: |
-          gh pr checkout "$PR_URL"
-            if [ "$(gh pr status --json reviewDecision -q .currentBranch.reviewDecision)" != "APPROVED" ];
-          then
-            gh pr review --approve "$PR_URL"
-          else
-            echo "PR already approved.";
-          fi
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.CICDTest}}
+    - uses: actions/github-script@v4
+      with:
+        script: |
+          const result = await github.pulls.createReview({
+          owner: context.repo.owner,
+          repo: context.repo.repo,
+          pull_number: context.issue.number,
+          event: "APPROVE"
+          })
+          console.log(result.status)
