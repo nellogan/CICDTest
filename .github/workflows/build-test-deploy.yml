@@ -44,7 +44,7 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    if: github.event.pull_request.user.login == 'andre601'
+    if: github.event.pull_request.user.login == 'nellogan'
     steps:
     - uses: actions/github-script@v4
     with:
