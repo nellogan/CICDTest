@@ -6,11 +6,11 @@ on:
 
 
 # todo preliminary-check
+#      if: ${{ github.actor != github.repository_owner }} # todo trusted members instead of only owner.
+# Verify that the feature branch does not change any workflow files unless author is a trusted member.
+# HEAD^ is refers to the most recent commit in the repo while HEAD is the proposed new commit.
+# Todo only supports owner update to check for trusted members instead.
 jobs:
-  #      if: ${{ github.actor != github.repository_owner }} # todo trusted members instead of only owner.
-  # Verify that the feature branch does not change any workflow files unless author is a trusted member.
-  # HEAD^ is refers to the most recent commit in the repo while HEAD is the proposed new commit.
-  # Todo only supports owner update to check for trusted members instead.
   preliminary-check:
     runs-on: ubuntu-latest
     steps:
