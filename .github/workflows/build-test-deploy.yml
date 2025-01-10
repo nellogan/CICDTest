@@ -84,3 +84,5 @@ jobs:
                 ].join('\n'),
               });
             }
+      - name: 'Approve PR'
+        run: gh pr review --approve "$PR_URL"
