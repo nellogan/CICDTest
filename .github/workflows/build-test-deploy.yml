@@ -105,5 +105,5 @@ jobs:
               pull_number: existingPR.number,
               commit_title: 'commit title placeholder',
               commit_message: 'commit message placeholder',
-              merge_method: merge
+              merge_method: "merge"
             });
