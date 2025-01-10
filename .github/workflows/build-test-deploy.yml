@@ -44,8 +44,7 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-    permissions:
-      pull-requests: write
+    permissions: write-all
     steps:
       - name: 'Create PR'
         uses: actions/github-script@v6
@@ -107,3 +106,4 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
+            console.log('\n\n\n mergePR:', mergePR);
