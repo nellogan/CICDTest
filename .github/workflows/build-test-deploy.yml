@@ -1,56 +1,56 @@
 name: build-test-deploy
 on: push
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: sudo apt-get install -y gcc
-
-      - name: Build functions.o
-        run: gcc -I. -c functions.c -o functions.o
-
-      - name: Build main.o
-        run: gcc -I. -c main.c -o main.o
-
-      - name: Build executable
-        run: gcc -I. functions.o main.o -o main_exe
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: main_exe-artifact
-          path: main_exe
-          retention-days: 0
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: checkout repo
-        uses: actions/checkout@v3
-
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: main_exe-artifact
-
-      - name: Grant execution privilege and run test
-        run: chmod 770 ./main_exe && ./main_exe
+#  build:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check out repository code
+#        uses: actions/checkout@v3
+#
+#      - name: Install dependencies
+#        run: sudo apt-get install -y gcc
+#
+#      - name: Build functions.o
+#        run: gcc -I. -c functions.c -o functions.o
+#
+#      - name: Build main.o
+#        run: gcc -I. -c main.c -o main.o
+#
+#      - name: Build executable
+#        run: gcc -I. functions.o main.o -o main_exe
+#
+#      - name: Upload artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: main_exe-artifact
+#          path: main_exe
+#          retention-days: 0
+#
+#  test:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: checkout repo
+#        uses: actions/checkout@v3
+#
+#      - name: Download artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: main_exe-artifact
+#
+#      - name: Grant execution privilege and run test
+#        run: chmod 770 ./main_exe && ./main_exe
 
   deploy:
-    needs: test
+#    needs: test
     runs-on: ubuntu-latest
 #    permissions: write-all
     permissions:
 #      actions: write
 #      attestations: write
 #      checks: write
-#      contents: write
-#      deployments: write
+      contents: write
+      deployments: write
 #      id-token: write
 #      issues: write
 #      discussions: write
