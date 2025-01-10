@@ -97,11 +97,13 @@ jobs:
               state: 'open',
             });
             const existingPR = pulls.data[0];
+            console.log('pulls.data:', pulls.data);
+            console.log('existingPR data:', existingPR);
             const mergePR = await github.rest.pulls.merge({
               owner: owner,
               repo: repo,
               pull_number: existingPR.number,
               commit_title: 'commit title placeholder',
               commit_message: 'commit message placeholder',
-              merge_method: merge
+              merge_method: "merge"
             });
