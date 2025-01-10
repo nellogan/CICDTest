@@ -1,8 +1,6 @@
 name: build-test-deploy
 on:
-  pull_request:
-    branches:
-      - main
+  pull_request
 
 # Automatically run CICD pipeline when pull request to main is opened or edited.
 # CRITICAL: Check that the feature branch of the pull request does not make any changes to main's workflows
