@@ -49,7 +49,7 @@ jobs:
 #      actions: write
 #      attestations: write
 #      checks: write
-      contents: read
+      contents: write
 #      deployments: write
 #      id-token: write
 #      issues: write
