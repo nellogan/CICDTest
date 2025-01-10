@@ -1,8 +1,6 @@
 name: build-test-deploy
 on:
-  pull_request:
-    branches:
-      - main
+  pull_request
 
 jobs:
   preliminary-check:
