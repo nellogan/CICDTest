@@ -81,11 +81,11 @@ jobs:
             });
 
 
-  zebra:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check that workflows have not been changed
-        run: echo prelim placeholder
+#  zebra:
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check that workflows have not been changed
+#        run: echo prelim placeholder
 
 
 # Automatically run CICD pipeline when pull request to main is opened or edited.
