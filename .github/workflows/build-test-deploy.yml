@@ -48,7 +48,7 @@ jobs:
     permissions:
       pull-requests: write
     steps:
-      - name: 'Create PR'
+      - name: 'Create or update pull request'
         uses: actions/github-script@v6
         with:
           script: |
