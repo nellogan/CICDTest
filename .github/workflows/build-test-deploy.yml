@@ -89,7 +89,15 @@ jobs:
         with:
           script: |
             const { repo, owner } = context.repo;
-            const pulls = await github.rest.pulls.merge({
+            const pulls = await github.rest.pulls.list({
+              owner: owner,
+              repo: repo,
+              head: context.ref,
+              base: 'main',
+              state: 'open',
+            });
+            const existingPR = pulls.data[0];
+            const mergePR = await github.rest.pulls.merge({
               owner: owner,
               repo: repo,
               pull_number: existingPR.number,
