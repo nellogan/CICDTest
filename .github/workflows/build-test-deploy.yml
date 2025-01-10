@@ -3,6 +3,8 @@ on:
   push:
     branches:
       - main
+  pull_request_review:
+    types: [submitted, edited]
   pull_request:
 
 # todo preliminary-check
