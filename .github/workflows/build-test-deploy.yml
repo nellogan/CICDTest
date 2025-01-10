@@ -47,12 +47,12 @@ jobs:
     if: github.event.pull_request.user.login == 'nellogan'
     steps:
     - uses: actions/github-script@v4
-    with:
-      script: |
-        const result = await github.pulls.createReview({
-        owner: context.repo.owner,
-        repo: context.repo.repo,
-        pull_number: context.issue.number,
-        event: "APPROVE"
-        })
-        console.log(result.status)
+      with:
+        script: |
+          const result = await github.pulls.createReview({
+          owner: context.repo.owner,
+          repo: context.repo.repo,
+          pull_number: context.issue.number,
+          event: "APPROVE"
+          })
+          console.log(result.status)
