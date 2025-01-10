@@ -3,9 +3,9 @@ on:
   push:
     branches:
       - main
-  pull_request_review:
-    types: [submitted, edited]
-  pull_request:
+  pull_request_target:
+
+#  pull_request:
 
 # todo preliminary-check
 #      if: ${{ github.actor != github.repository_owner }} # todo trusted members instead of only owner.
