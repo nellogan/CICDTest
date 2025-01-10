@@ -43,7 +43,6 @@ jobs:
 
   deploy:
     needs: test
-    if: github.ref == 'refs/heads/beta'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
