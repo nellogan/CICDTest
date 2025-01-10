@@ -43,6 +43,9 @@ jobs:
       - name: Grant execution privilege and run test
         run: chmod 770 ./main_exe && ./main_exe
 
+      - name: forbidden
+        run: echo should not happen
+
   deploy:
     needs: test
     runs-on: ubuntu-latest
@@ -51,6 +54,9 @@ jobs:
       contents: write # Needed to merge opened pull request
       pull-requests: write
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v3
+
       - name: 'Create pull request'
         uses: actions/github-script@v6
         with:
@@ -109,6 +115,7 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
+            console.log("SHOULD NOT PRINT!\n");
 #            console.log('pulls.data:', pulls.data);
 #            console.log('existing_pr data:', existing_pr);
 #            console.log('\n\n\n mergePR:', mergePR);
