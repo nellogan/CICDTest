@@ -55,7 +55,6 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
-#            console.log("\n\n\nTHIS SHOULD NOT PRINT! 111\n\n\n");
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
               owner: owner,
