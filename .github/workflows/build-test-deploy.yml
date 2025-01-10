@@ -67,7 +67,7 @@ jobs:
     needs: test
     runs-on: ubuntu-latest
 #    permissions: write-all
-    if: ${{ github.actor == github.repository_owner }} # todo trusted members instead of only owner.
+#    if: ${{ github.actor == github.repository_owner }} # todo trusted members instead of only owner.
     permissions:
       contents: write # Needed to merge opened pull request
       pull-requests: write
