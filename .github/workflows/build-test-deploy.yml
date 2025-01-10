@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main
+  pull_request:
 
 # todo preliminary-check
 #      if: ${{ github.actor != github.repository_owner }} # todo trusted members instead of only owner.
