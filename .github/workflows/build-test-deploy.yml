@@ -43,12 +43,11 @@ jobs:
 
   deploy:
     needs: test
-    if: github.ref == 'refs/heads/beta'
     runs-on: ubuntu-latest
     permissions:
       pull-requests: write
     steps:
-      - name: 'Create or update pull request'
+      - name: 'Create PR'
         uses: actions/github-script@v6
         with:
           script: |
