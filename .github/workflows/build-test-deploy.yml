@@ -41,8 +41,9 @@ jobs:
         run: chmod 770 ./main_exe && ./main_exe
 
   deploy:
+    needs: test
     runs-on: ubuntu-latest
-    if: ${{ github.actor == 'dependabot[bot]' }}
+    if: ${{ github.actor == github.repository_owner }}
     steps:
       - name: Dependabot metadata
         id: metadata
