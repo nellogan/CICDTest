@@ -85,7 +85,15 @@ jobs:
               });
             }
       - name: 'Approve PR'
-        env:
-          PR_URL: ${{github.event.pull_request.html_url}}
-          GITHUB_TOKEN: ${{secrets.CICDTest}}
-        run: gh pr review --approve "$PR_URL"
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const { repo, owner } = context.repo;
+            const pulls = await github.rest.pulls.merge({
+              owner: owner,
+              repo: repo,
+              pull_number: existingPR.number,
+              commit_title: 'commit title placeholder',
+              commit_message: 'commit message placeholder',
+              merge_method: merge
+            });
