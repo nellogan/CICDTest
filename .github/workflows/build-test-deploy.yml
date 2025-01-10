@@ -8,12 +8,6 @@ on:
 # HEAD^ is refers to the most recent commit in the repo while HEAD is the proposed new commit.
 # Todo only supports owner update to check for trusted members instead.
 jobs:
-  zebra:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check that workflows have not been changed
-        run: echo prelim placeholder
-
   build:
     runs-on: ubuntu-latest
     steps:
@@ -85,6 +79,13 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
+
+
+  zebra:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check that workflows have not been changed
+        run: echo prelim placeholder
 
 
 # Automatically run CICD pipeline when pull request to main is opened or edited.
