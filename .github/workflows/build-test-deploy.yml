@@ -1,9 +1,6 @@
 name: build-test-deploy
 on:
-  pull_request:
-    branches:
-      - main
-
+  pull_request
 
 # todo preliminary-check
 #      if: ${{ github.actor != github.repository_owner }} # todo trusted members instead of only owner.
@@ -14,8 +11,8 @@ jobs:
   preliminary:
     runs-on: ubuntu-latest
     steps:
-    - name: Check that workflows have not been changed
-      run: echo prelim placeholder
+      - name: Check that workflows have not been changed
+        run: echo prelim placeholder
 
   build:
     runs-on: ubuntu-latest
