@@ -5,11 +5,14 @@ on:
       - main
 
 # Automatically run CICD pipeline when pull request to main is opened or edited.
-# CRITICAL: Check that the feature branch of the pull request does not make any changes to main's workflows (preliminary check).
+# CRITICAL: Check that the feature branch of the pull request does not make any changes to main's workflows
+# (preliminary check) unless changed by owner.
 # Enforce checks set in author/repo -> settings -> rules -> rulesets -> status checks. If checks fail, merge is
 # disabled. If pull request is from owner (or trusted members), automatically merge feature branch into main.
 # Todo specify trusted members instead of only owner.
 
+
+#if: ${{ github.actor == github.repository_owner }} # todo trusted members instead of only owner.
 jobs:
   preliminary-check:
     runs-on: ubuntu-latest
@@ -18,6 +21,7 @@ jobs:
       run: echo preliminary-check placeholder
 
   build:
+    needs: preliminary-check
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -70,6 +74,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log("github.actor:", github.actor);
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
               owner: owner,
@@ -87,7 +92,7 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
-            console.log("SHOULD NOT PRINT!\n");
+#            console.log("SHOULD NOT PRINT!\n");
 #            console.log('pulls.data:', pulls.data);
 #            console.log('existing_pr data:', existing_pr);
 #            console.log('\n\n\n mergePR:', mergePR);
