@@ -61,7 +61,7 @@ jobs:
               base: 'main',
               state: 'open',
             });
-            console.log("\n\n\nTHIS SHOULD NOT PRINT!\n\n\n");
+            console.log("\n\n\nTHIS SHOULD NOT PRINT! 222\n\n\n");
             if (pulls.data.length < 1) {
               await github.rest.pulls.create({
                 title: '[CI] Merge beta into main',
