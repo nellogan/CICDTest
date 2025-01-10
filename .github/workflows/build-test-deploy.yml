@@ -49,9 +49,9 @@ jobs:
 #      actions: write
 #      attestations: write
 #      checks: write
-      contents: write
-      deployments: write
-      id-token: write
+#      contents: write
+#      deployments: write
+#      id-token: write
 #      issues: write
 #      discussions: write
 #      packages: write
