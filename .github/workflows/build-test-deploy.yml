@@ -87,7 +87,7 @@ jobs:
               owner: owner,
               repo: repo,
               head: context.ref,
-              base: 'main',
+              base: 'branch2',
               state: 'open',
             });
             console.log("\n\n pulls", pulls);
