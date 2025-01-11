@@ -16,18 +16,19 @@ jobs:
     runs-on: ubuntu-latest
 #    if: ${{ github.actor == github.repository_owner }}
     permissions:
+      contents: write
       pull-requests: write
     steps:
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request@v7
+        uses: peter-evans/create-pull-request
         with:
           token: ${{ secrets.CICDWTF }}
           commit-message: Update report
           committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: branch2
+          branch: main
           delete-branch: true
           title: '[Example] Update report'
           body: |
