@@ -5,6 +5,9 @@ on:
 
 permissions: write-all
 
+env:
+  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
+
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
 jobs:
@@ -53,33 +56,33 @@ jobs:
                 ].join('\n'),
               });
             }
-
-      - name: 'Close pull request'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            console.log("check\n");
-            const { repo, owner } = context.repo;
-            const pulls2 = await github.rest.pulls.list({
-              owner: owner,
-              repo: repo,
-              head: context.ref,
-              base: 'main',
-              state: 'open',
-            });
-            const existing_pr = pulls2.data[0];
-            console.log("existing_pr", existing_pr);
-            const close_pr = await github.rest.pulls.update({
-              owner: owner,
-              repo: repo,
-              pull_number: existing_pr.number,
-              state: "closed",
-            });
-            console.log("close_pr", close_pr);
-            const reopen_pr = await github.rest.pulls.update({
-             owner: owner,
-             repo: repo,
-             pull_number: existing_pr.number,
-             state: "open",
-            });
-            console.log("reopen_pr", close_pr);
+#
+#      - name: 'Close pull request'
+#        uses: actions/github-script@v6
+#        with:
+#          script: |
+#            console.log("check\n");
+#            const { repo, owner } = context.repo;
+#            const pulls2 = await github.rest.pulls.list({
+#              owner: owner,
+#              repo: repo,
+#              head: context.ref,
+#              base: 'main',
+#              state: 'open',
+#            });
+#            const existing_pr = pulls2.data[0];
+#            console.log("existing_pr", existing_pr);
+#            const close_pr = await github.rest.pulls.update({
+#              owner: owner,
+#              repo: repo,
+#              pull_number: existing_pr.number,
+#              state: "closed",
+#            });
+#            console.log("close_pr", close_pr);
+#            const reopen_pr = await github.rest.pulls.update({
+#             owner: owner,
+#             repo: repo,
+#             pull_number: existing_pr.number,
+#             state: "open",
+#            });
+#            console.log("reopen_pr", close_pr);
