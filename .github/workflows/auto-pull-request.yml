@@ -15,20 +15,20 @@ jobs:
   open-pull-request:
     runs-on: ubuntu-latest
 #    if: ${{ github.actor == github.repository_owner }}
-    permissions:
-      contents: write
-      pull-requests: write
+#    permissions:
+#      contents: write
+#      pull-requests: write
     steps:
       - name: Create Pull Request
         id: cpr
-        uses: peter-evans/create-pull-request
+        uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.CICDWTF }}
           commit-message: Update report
           committer: github-actions[bot] <41898282+github-actions[bot]@users.noreply.github.com>
           author: ${{ github.actor }} <${{ github.actor_id }}+${{ github.actor }}@users.noreply.github.com>
           signoff: false
-          branch: main
+          branch: example-patches
           delete-branch: true
           title: '[Example] Update report'
           body: |
