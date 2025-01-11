@@ -12,17 +12,15 @@ permissions: write-all
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
 jobs:
-  open-pull-request:
+  createPullRequest:
     runs-on: ubuntu-latest
-#    if: ${{ github.actor == github.repository_owner }}
-    permissions:
-      contents: write
-      pull-requests: write
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-      - name: 'Create pull request'
+      - name: Make changes to pull request
+        run: date +%s > report.txt
+
+      - name: Create Pull Request
         id: cpr
         uses: peter-evans/create-pull-request@v7
         with:
