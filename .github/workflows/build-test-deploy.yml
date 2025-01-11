@@ -1,8 +1,8 @@
 name: build-test-deploy
 on:
-#  pull_request:
-#    types: [ edited, reopened, ready_for_review, synchronize, opened ]
-  push:
+  pull_request:
+    types: [ edited, reopened, ready_for_review, synchronize, opened ]
+#  push:
 #    branches:
 #      - main
 
