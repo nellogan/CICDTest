@@ -3,7 +3,8 @@ name: build-test-deploy
 permissions: write-all
 
 env:
-  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
+#  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
+  GITHUB_TOKEN: ${{ secrets.CICDWTF }}
 
 on:
 #  push:

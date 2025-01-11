@@ -5,6 +5,9 @@ on:
 
 permissions: write-all
 
+env:
+#  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
+  GITHUB_TOKEN: ${{ secrets.CICDWTF }}
 
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
