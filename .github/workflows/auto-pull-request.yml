@@ -59,7 +59,7 @@ jobs:
         with:
           script: |
             console.log("check\n");
-#            const { repo, owner } = context.repo;
+            const { repo, owner } = context.repo;
 #            const pulls2 = await github.rest.pulls.list({
 #              owner: owner,
 #              repo: repo,
