@@ -3,9 +3,9 @@ name: build-test-deploy
 permissions: write-all
 
 on:
-  push:
-    branches:
-      - main
+#  push:
+#    branches:
+#      - main
 
   pull_request:
     branches:
