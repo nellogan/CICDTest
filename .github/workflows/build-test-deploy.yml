@@ -79,6 +79,7 @@ jobs:
       - name: 'Auto approve pull request from trusted member'
         uses: actions/github-script@v6
         with:
+          token: ${{ secrets.CICDWTF }}
           script: |
             console.log("github.actor:", github.actor);
             const { repo, owner } = context.repo;
