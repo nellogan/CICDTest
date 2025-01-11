@@ -2,6 +2,8 @@ name: build-test-deploy
 on:
   pull_request:
     types: [ edited, reopened, ready_for_review, synchronize, opened ]
+  pull_request_review:
+    types: [ submitted, edited ]
 #  push:
 #    branches:
 #      - main
