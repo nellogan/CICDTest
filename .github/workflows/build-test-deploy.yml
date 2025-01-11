@@ -101,4 +101,4 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
-            console.log("\n\n mergePR", mergePR);
+            console.log("\n\n 1mergePR", mergePR);
