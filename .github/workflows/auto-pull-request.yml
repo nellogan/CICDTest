@@ -19,8 +19,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Make changes to pull request
-        run: date +%s > report.txt
+#      - name: Make changes to pull request
+#        run: date +%s > report.txt
 
       - name: Create Pull Request
         id: cpr
@@ -44,3 +44,6 @@ jobs:
             report
             automated pr
           draft: false
+
+      - name:
+          run: rm report.txt
