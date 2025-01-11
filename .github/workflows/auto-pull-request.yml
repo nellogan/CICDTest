@@ -3,6 +3,10 @@ name: auto-pull-request
 on:
   push
 
+permissions:
+  contents: write
+  pull-requests: write
+
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
 jobs:
