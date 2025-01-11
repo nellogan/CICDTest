@@ -2,6 +2,8 @@ name: auto-pull-request
 
 on:
   push:
+    branches:
+      - branch2
 #    branches:
 #      - '!master'
 
