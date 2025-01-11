@@ -67,7 +67,8 @@ jobs:
               base: 'main',
               state: 'open',
             });
-            console.log("pulls2", pulls2);
+            const existing_pr = pulls.data[0];
+            console.log("existing_pr", existing_pr);
             const close_pr = await github.rest.pulls2.update({
               owner: owner,
               repo: repo,
