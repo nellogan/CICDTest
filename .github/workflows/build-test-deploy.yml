@@ -78,6 +78,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            console.log("start\n");
             console.log("github.actor:", github.actor);
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
@@ -87,6 +88,7 @@ jobs:
               base: 'main',
               state: 'open',
             });
+            console.log("1 pulls.data", pulls.data);
             const existing_pr = pulls.data[0];
             const mergePR = await github.rest.pulls.merge({
               owner: owner,
@@ -96,3 +98,4 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
+            console.log("2 mergePR", mergePR);
