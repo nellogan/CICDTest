@@ -39,6 +39,8 @@ jobs:
           labels: |
             report
             automated pr
+          assignees: nellogan
+          reviewers: nellogan
           team-reviewers: |
             developers
             qa-team
