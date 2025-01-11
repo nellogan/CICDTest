@@ -39,6 +39,4 @@ jobs:
           labels: |
             report
             automated pr
-          assignees: nellogan
-          reviewers: nellogan
           draft: false
