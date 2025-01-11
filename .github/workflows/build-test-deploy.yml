@@ -3,10 +3,13 @@ name: build-test-deploy
 permissions: write-all
 
 on:
+  push:
+    branches:
+      - main
+
   pull_request:
-    types: [ edited, reopened, ready_for_review, synchronize, opened ]
-  pull_request_review:
-    types: [ submitted, edited ]
+    branches:
+      - main
 #  push:
 #    branches:
 #      - main
