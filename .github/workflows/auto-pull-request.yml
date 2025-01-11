@@ -59,15 +59,15 @@ jobs:
         with:
           script: |
             const { repo, owner } = context.repo;
-            const pulls = await github.rest.pulls.list({
+            const pulls2 = await github.rest.pulls.list({
               owner: owner,
               repo: repo,
               head: context.ref,
               base: 'main',
               state: 'open',
             });
-            console.log("pulls", pulls);
-            const close_pr await github.rest.pulls.update({
+            console.log("pulls2", pulls2);
+            const close_pr await github.rest.pulls2.update({
               owner: owner,
               repo: repo,
               pull_number: existing_pr.number,
