@@ -1,16 +1,10 @@
 name: build-test-deploy
 
-workflow_run:
-    workflows: [auto-pull-request]
-    types:
-      - completed
 
 permissions: write-all
 
-
 env:
 #  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
-  GITHUB_TOKEN: ${{ secrets.CICDWTF }}
   PR_NUMBER: ${{ github.event.number }}
 
 on:
@@ -37,6 +31,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CICDTEST }}
 
       - name: Install dependencies
         run: sudo apt-get install -y gcc
