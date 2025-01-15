@@ -9,13 +9,12 @@ env:
   PR_NUMBER: ${{ github.event.number }}
 
 on:
-#  push:
-#    branches:
-#      - main
-
+  push:
+    branches:
+    - main
   pull_request:
     branches:
-      - main
+    - main
 
 #  push:
 #    branches:
@@ -82,6 +81,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const { repo, owner } = context.repo;
             const merge_pr = await github.rest.pulls.merge({
               owner: owner,
               repo: repo,
