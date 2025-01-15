@@ -2,9 +2,11 @@ name: build-test-deploy
 
 permissions: write-all
 
+
 env:
 #  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
   GITHUB_TOKEN: ${{ secrets.CICDWTF }}
+  PR_NUMBER: ${{ github.event.number }}
 
 on:
 #  push:
@@ -12,13 +14,14 @@ on:
 #      - main
 
   pull_request:
-    types:
-      [ reopened ]
-#    branches:
-#      - main
-  push:
     branches:
       - main
+    types:
+      [ reopened ]
+
+#  push:
+#    branches:
+#      - main
 
 
 # todo preliminary-check
@@ -77,28 +80,16 @@ jobs:
 #      contents: write # Needed to merge opened pull request
 #      pull-requests: write
     steps:
-      - name: 'Auto approve pull request from trusted member'
+      - name: 'Merge pull request'
         uses: actions/github-script@v6
         with:
           script: |
-            console.log("github.actor:", github.actor);
-            const { repo, owner } = context.repo;
-            const pulls = await github.rest.pulls.list({
+            const merge_pr = await github.rest.pulls.merge({
               owner: owner,
               repo: repo,
-              head: context.ref,
-              base: 'branch2',
-              state: 'open',
-            });
-            console.log("\n\n pulls", pulls);
-            const existing_pr = pulls.data[0];
-            console.log("\n\n existing_pr", existing_pr);
-            const mergePR = await github.rest.pulls.merge({
-              owner: owner,
-              repo: repo,
-              pull_number: existing_pr.number,
+              pull_number: ${{ env.PR_NUMBER }},
               commit_title: 'commit title placeholder',
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
-            console.log("\n\n 1mergePR", mergePR);
+            console.log("merge_pr: ", merge_pr);

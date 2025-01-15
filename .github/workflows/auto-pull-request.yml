@@ -6,6 +6,10 @@ on:
       - '**'
       - '!main'
 
+env:
+#  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
+  GITHUB_TOKEN: ${{ secrets.CICDWTF }}
+
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
 jobs:
@@ -17,7 +21,7 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
 
-      - name: 'Create pull request'
+      - name: 'Create or update pull request'
         uses: actions/github-script@v6
         with:
           script: |
@@ -54,30 +58,30 @@ jobs:
               });
             }
 
-      - name: 'Close pull request'
-        uses: actions/github-script@v6
-        with:
-          script: |
-            console.log("check\n");
-            const { repo, owner } = context.repo;
-            const pulls2 = await github.rest.pulls.list({
-              owner: owner,
-              repo: repo,
-              head: context.ref,
-              base: 'main',
-              state: 'open',
-            });
-            const existing_pr = pulls2.data[0];
-             
-            const merge_pr = await github.rest.pulls.merge({
-              owner: owner,
-              repo: repo,
-              pull_number: existing_pr.number,
-              commit_title: 'commit title placeholder',
-              commit_message: 'commit message placeholder',
-              merge_method: "merge"
-            });
-            console.log("merge_pr: ", merge_pr);
+#      - name: 'Merge pull request'
+#        uses: actions/github-script@v6
+#        with:
+#          script: |
+#            console.log("check\n");
+#            const { repo, owner } = context.repo;
+#            const pulls2 = await github.rest.pulls.list({
+#              owner: owner,
+#              repo: repo,
+#              head: context.ref,
+#              base: 'main',
+#              state: 'open',
+#            });
+#            const existing_pr = pulls2.data[0];
+#
+#            const merge_pr = await github.rest.pulls.merge({
+#              owner: owner,
+#              repo: repo,
+#              pull_number: existing_pr.number,
+#              commit_title: 'commit title placeholder',
+#              commit_message: 'commit message placeholder',
+#              merge_method: "merge"
+#            });
+#            console.log("merge_pr: ", merge_pr);
             
 
 #            console.log("existing_pr", existing_pr);
