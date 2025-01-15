@@ -9,8 +9,7 @@ jobs:
   open-pull-request:
     runs-on: ubuntu-latest
 #    if: ${{ github.actor == github.repository_owner }}
-    permissions:
-      pull-requests: write-all
+    permissions: write-all
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
