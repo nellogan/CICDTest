@@ -68,13 +68,26 @@ jobs:
               state: 'open',
             });
             const existing_pr = pulls2.data[0];
-            console.log("existing_pr", existing_pr);
-            const close_pr = await github.rest.pulls.update({
+            
+            const merge_pr = await github.rest.pulls.merge({
               owner: owner,
               repo: repo,
-              pull_number: existing_pr.number,
-              state: "merged",
+              head: context.ref,
+              commit_title: "auto merge workflow commit title",
+              commit_message: "auto merge workflow commit message"
+              merge_method: 'merge',
             });
+            console.log("merge_pr: ", merge_pr);
+            
+            
+
+#            console.log("existing_pr", existing_pr);
+#            const close_pr = await github.rest.pulls.update({
+#              owner: owner,
+#              repo: repo,
+#              pull_number: existing_pr.number,
+#              state: "closed",
+#            });
 #            console.log("close_pr", close_pr);
 #            const reopen_pr = await github.rest.pulls.update({
 #             owner: owner,
