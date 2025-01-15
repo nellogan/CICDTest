@@ -15,7 +15,8 @@ on:
   pull_request:
     branches:
     - main
-  type: reopened
+  types:
+    - reopened
 
 #  push:
 #    branches:
