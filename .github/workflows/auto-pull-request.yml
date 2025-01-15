@@ -20,10 +20,13 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.CICDWTF }}
 
       - name: 'Create or update, close, then reopen pull request'
         uses: actions/github-script@v6
         with:
+          token: ${{ secrets.CICDWTF }}
           script: |
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
@@ -71,6 +74,13 @@ jobs:
                 repo: repo,
                 pull_number: existing_pr.number,
                 state: 'open'
+              });
+            
+            await github.rest.pulls.update({
+                owner: owner,
+                repo: repo,
+                pull_number: existing_pr.number,
+                body: 'body updated'
             });
             
 
