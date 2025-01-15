@@ -17,7 +17,7 @@ on:
     branches:
       - main
     types:
-      [ reopened ]
+      [ opened, reopened ]
 
 #  push:
 #    branches:
