@@ -4,7 +4,7 @@ name: build-test-deploy
 permissions: write-all
 
 env:
-#  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
+  GITHUB_TOKEN: ${{ secrets.CICDMEME }}
   PR_NUMBER: ${{ github.event.number }}
 
 on:
