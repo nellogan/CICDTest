@@ -1,5 +1,10 @@
 name: build-test-deploy
 
+workflow_run:
+    workflows: [auto-pull-request]
+    types:
+      - completed
+
 permissions: write-all
 
 
