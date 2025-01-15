@@ -7,8 +7,8 @@ on:
       - '!main'
 
 #env:
-##  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
-#  GITHUB_TOKEN: ${{ secrets.CICDTEST }}
+##  GITHUB_TOKEN: ${{ secrets.CICDMEME }}
+#  GITHUB_TOKEN: ${{ secrets.CICDMEME }}
 
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
@@ -21,12 +21,12 @@ jobs:
       - name: checkout repo
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.CICDTEST }}
+          token: ${{ secrets.CICDMEME }}
 
       - name: 'Create or update, close, then reopen pull request'
         uses: actions/github-script@v6
         with:
-          token: ${{ secrets.CICDTEST }}
+          token: ${{ secrets.CICDMEME }}
           script: |
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
@@ -50,8 +50,10 @@ jobs:
                 ].join('\n'),
               });
             };
-#
-#
+
+
+
+
 #            const pulls2 = await github.rest.pulls.list({
 #              owner: owner,
 #              repo: repo,

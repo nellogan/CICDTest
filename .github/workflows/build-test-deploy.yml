@@ -28,7 +28,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.CICDTEST }}
+          token: ${{ secrets.CICDMEME }}
 
       - name: Install dependencies
         run: sudo apt-get install -y gcc
