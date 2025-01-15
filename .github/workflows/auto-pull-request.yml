@@ -70,8 +70,14 @@ jobs:
                 owner: owner,
                 repo: repo,
                 pull_number: existing_pr.number,
-                body: 'body updated'
                 state: 'open'
+              });
+            
+            await github.rest.pulls.update({
+                owner: owner,
+                repo: repo,
+                pull_number: existing_pr.number,
+                body: 'body updated'
             });
             
 
