@@ -62,7 +62,6 @@ jobs:
             await github.rest.pulls.update({
                 owner: owner,
                 repo: repo,
-                body: 'updated body.'
                 pull_number: existing_pr.number,
                 state: 'closed'
               });
@@ -71,6 +70,7 @@ jobs:
                 owner: owner,
                 repo: repo,
                 pull_number: existing_pr.number,
+                body: 'body updated'
                 state: 'open'
             });
             
