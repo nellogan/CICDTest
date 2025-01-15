@@ -81,6 +81,7 @@ jobs:
         uses: actions/github-script@v6
         with:
           script: |
+            const { repo, owner } = context.repo;
             const merge_pr = await github.rest.pulls.merge({
               owner: owner,
               repo: repo,
