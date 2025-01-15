@@ -75,7 +75,6 @@ jobs:
               head: context.ref,
               commit_title: "auto merge workflow commit title",
               commit_message: "auto merge workflow commit message"
-              state: 'merge',
             });
             console.log("merge_pr: ", merge_pr);
             
