@@ -73,13 +73,13 @@ jobs:
               owner: owner,
               repo: repo,
               pull_number: existing_pr.number,
-              state: "closed",
+              state: "merged",
             });
-            console.log("close_pr", close_pr);
-            const reopen_pr = await github.rest.pulls.update({
-             owner: owner,
-             repo: repo,
-             pull_number: existing_pr.number,
-             state: "open",
-            });
-            console.log("reopen_pr", reopen_pr);
+#            console.log("close_pr", close_pr);
+#            const reopen_pr = await github.rest.pulls.update({
+#             owner: owner,
+#             repo: repo,
+#             pull_number: existing_pr.number,
+#             state: "open",
+#            });
+#            console.log("reopen_pr", reopen_pr);
