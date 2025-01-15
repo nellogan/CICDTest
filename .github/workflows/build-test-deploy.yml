@@ -16,8 +16,7 @@ on:
   pull_request:
     branches:
       - main
-    types:
-      - [ opened, edited, synchronized, reopened ]
+    types: [ opened, edited, synchronized, reopened ]
 
 #  push:
 #    branches:
