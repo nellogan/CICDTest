@@ -30,6 +30,12 @@ jobs:
         with:
           token: ${{ secrets.CICDMEME }}
 
+      - name: PR NUMBER CHECK
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log("PR NUMBER CHECK", ${{ env.PR_NUMBER }});
+
       - name: Install dependencies
         run: sudo apt-get install -y gcc
 
