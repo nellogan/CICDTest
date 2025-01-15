@@ -82,4 +82,4 @@ jobs:
              pull_number: existing_pr.number,
              state: "open",
             });
-            console.log("reopen_pr", close_pr);
+            console.log("reopen_pr", reopen_pr);
