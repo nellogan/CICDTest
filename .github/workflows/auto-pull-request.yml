@@ -3,9 +3,6 @@ name: auto-pull-request
 on:
   push
 
-with:
-  token: ${{ secrets.CICDWTF }}
-
 permissions: write-all
 
 # Automatically open a pull request when a trusted member pushes.
@@ -59,6 +56,7 @@ jobs:
 
       - name: 'Close pull request'
         uses: actions/github-script@v6
+        permissions: write-all
         with:
           script: |
             console.log("check\n");
