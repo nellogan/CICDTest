@@ -25,3 +25,4 @@ jobs:
         with:
           token: ${{ secrets.CICDWTF }}
           commit-message: Update report
+          base: main
