@@ -50,38 +50,38 @@ jobs:
                 ].join('\n'),
               });
             };
-            
-            
-            const pulls2 = await github.rest.pulls.list({
-              owner: owner,
-              repo: repo,
-              head: context.ref,
-              base: 'main',
-              state: 'open',
-            });
-            const existing_pr = pulls2.data[0];
-            console.log("existing_pr: ", existing_pr);
-            
-            await github.rest.pulls.update({
-                owner: owner,
-                repo: repo,
-                pull_number: existing_pr.number,
-                state: 'closed'
-              });
-            
-            await github.rest.pulls.update({
-                owner: owner,
-                repo: repo,
-                pull_number: existing_pr.number,
-                state: 'open'
-              });
-            
-            await github.rest.pulls.update({
-                owner: owner,
-                repo: repo,
-                pull_number: existing_pr.number,
-                body: 'body updated'
-            });
+#
+#
+#            const pulls2 = await github.rest.pulls.list({
+#              owner: owner,
+#              repo: repo,
+#              head: context.ref,
+#              base: 'main',
+#              state: 'open',
+#            });
+#            const existing_pr = pulls2.data[0];
+#            console.log("existing_pr: ", existing_pr);
+#
+#            await github.rest.pulls.update({
+#                owner: owner,
+#                repo: repo,
+#                pull_number: existing_pr.number,
+#                state: 'closed'
+#              });
+#
+#            await github.rest.pulls.update({
+#                owner: owner,
+#                repo: repo,
+#                pull_number: existing_pr.number,
+#                state: 'open'
+#              });
+#
+#            await github.rest.pulls.update({
+#                owner: owner,
+#                repo: repo,
+#                pull_number: existing_pr.number,
+#                body: 'body updated'
+#            });
             
 
 #            if (pulls.data.length < 1) {
