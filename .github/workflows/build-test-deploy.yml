@@ -11,12 +11,14 @@ env:
 on:
   push:
     branches:
-    - main
+      - main
+    types:
+      - reopened
   pull_request:
     branches:
-    - main
-  types:
-    - reopened
+      - main
+    types:
+      - reopened
 
 #  push:
 #    branches:
