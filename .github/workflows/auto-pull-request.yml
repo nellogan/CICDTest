@@ -57,6 +57,7 @@ jobs:
       - name: 'Close pull request'
         uses: actions/github-script@v6
         with:
+          token: ${{ secrets.CICDWTF }}
           script: |
             console.log("check\n");
             const { repo, owner } = context.repo;
