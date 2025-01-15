@@ -12,13 +12,9 @@ on:
   push:
     branches:
       - main
-    types:
-      - reopened
   pull_request:
     branches:
       - main
-    types:
-      - reopened
 
 #  push:
 #    branches:
