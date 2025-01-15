@@ -3,10 +3,10 @@ name: auto-pull-request
 on:
   push
 
-permissions: write-all
-
 with:
   token: ${{ secrets.CICDWTF }}
+
+permissions: write-all
 
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
@@ -59,7 +59,7 @@ jobs:
 
       - name: 'Close pull request'
         uses: actions/github-script@v6
-
+        with:
           script: |
             console.log("check\n");
             const { repo, owner } = context.repo;
