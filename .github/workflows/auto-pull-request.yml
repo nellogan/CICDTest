@@ -16,8 +16,10 @@ jobs:
     steps:
       - name: 'Create or update, close, then reopen pull request'
         uses: actions/github-script@v6
+        permissions:
+          pull-requests: write
         with:
-          github-token: ${{ secrets.CICD_REAL2 }}
+          github-token: ${{ secrets.CICD_REAL3 }}
           script: |
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
