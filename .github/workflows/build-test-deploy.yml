@@ -75,8 +75,8 @@ jobs:
     # If using a team based structure instead of a solo developer.
     # if: ${{ github.actor == github.team_slug && github.actor.permissions == approved }}
 
-    if: ${{ github.actor != github.repository_owner }}
 
+    if: ${{ github.actor != github.repository_owner }}
     needs: test
     runs-on: ubuntu-latest
     steps:
