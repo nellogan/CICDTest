@@ -25,10 +25,9 @@ jobs:
     steps:
       - name: Verify that workflows have not changed
         run: |
-          echo github.event.pull_request.base.sha ${{ github.event.pull_request.base.sha }}
-          echo github.event.pull_request.head.sha ${{ github.event.pull_request.head.sha }}
-          NUM=$(git diff ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} \
-          -- .github/workflows/  | wc -c)
+          echo github.event.pull_request.base ${{ github.event.pull_request.base }}
+          echo github.event.pull_request.head ${{ github.event.pull_request.head }}
+          NUM=$(git diff --name-only origin/main origin/${github.event.pull_request.head}  | wc -c)
           echo number of bytes changed in .github/workflows/ $NUM
           if [ "$NUM" -ne 0 ]
           then
