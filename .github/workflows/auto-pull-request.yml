@@ -18,7 +18,6 @@ jobs:
         with:
           github-token: ${{ secrets.CICD_REAL2 }}
           script: |
-            console.log("NEW INFO!!\n");
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
               owner: owner,
