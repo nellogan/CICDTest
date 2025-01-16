@@ -17,7 +17,9 @@ jobs:
         uses: actions/github-script@v7
         with:
           script: |
-            console.log("context.repo.collaborators", ${{ context.repo.collaborators }});
+            const { repo, owner } = context.repo;
+            console.log("context.repo", context.repo);
+            console.log("\n\n context.repo.collaborators", context.repo.collaborators);
         
 
       - name: 'Create pull request'
