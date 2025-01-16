@@ -18,7 +18,7 @@ jobs:
 #    if: ${{ github.actor == github.repository_owner }}
 #    permissions: write-all
     permissions:
-      pull_requests: write
+      pull-requests: write
       contents: write
 
     steps:
