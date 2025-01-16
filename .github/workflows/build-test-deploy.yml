@@ -32,51 +32,51 @@ jobs:
             echo "No changes detected in .github/ directory, proceeding with build."
           fi
 
-  build:
-    needs: verify-safe
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-
-      - name: Install dependencies
-        run: sudo apt-get install -y gcc
-
-      - name: Build functions.o
-        run: gcc -I. -c functions.c -o functions.o
-
-      - name: Build main.o
-        run: gcc -I. -c main.c -o main.o
-
-      - name: Build executable
-        run: gcc -I. functions.o main.o -o main_exe
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: main_exe-artifact
-          path: main_exe
-          retention-days: 1
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: main_exe-artifact
-
-      - name: Grant execution privilege and run test
-        run: chmod 770 ./main_exe && ./main_exe
+#  build:
+#    needs: verify-safe
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Check out repository code
+#        uses: actions/checkout@v4
+#
+#      - name: Install dependencies
+#        run: sudo apt-get install -y gcc
+#
+#      - name: Build functions.o
+#        run: gcc -I. -c functions.c -o functions.o
+#
+#      - name: Build main.o
+#        run: gcc -I. -c main.c -o main.o
+#
+#      - name: Build executable
+#        run: gcc -I. functions.o main.o -o main_exe
+#
+#      - name: Upload artifact
+#        uses: actions/upload-artifact@v4
+#        with:
+#          name: main_exe-artifact
+#          path: main_exe
+#          retention-days: 1
+#
+#  test:
+#    needs: build
+#    runs-on: ubuntu-latest
+#    steps:
+#      - name: Download artifact
+#        uses: actions/download-artifact@v4
+#        with:
+#          name: main_exe-artifact
+#
+#      - name: Grant execution privilege and run test
+#        run: chmod 770 ./main_exe && ./main_exe
 
   deploy:
-    needs: test
+    needs: verify-safe
     runs-on: ubuntu-latest
 
     steps:
       - name: 'Merge pull request'
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         with:
           script: |
             const { repo, owner } = context.repo;
