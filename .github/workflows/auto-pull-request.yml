@@ -12,7 +12,6 @@ jobs:
   open-pull-request:
     runs-on: ubuntu-latest
 #    if: ${{ github.actor == github.repository_owner }}
-
     steps:
       - name: 'Create or update, close, then reopen pull request'
         uses: actions/github-script@v6
