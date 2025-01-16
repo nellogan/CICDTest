@@ -110,4 +110,3 @@ jobs:
 
       - name: call workflow
         uses: ./.github/workflows/build-test-deploy.yml
-        secrets: inherit
