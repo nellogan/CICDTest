@@ -32,8 +32,6 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
-        with:
-          ssh-key: ${{ secrets.COMMIT_KEY }}
 
       - name: Print event trigger
         run: echo trigger was ${{ github.event_name }}, action was ${{ github.event.action }}
