@@ -19,57 +19,6 @@ on:
 # HEAD^ is refers to the most recent commit in the repo while HEAD is the proposed new commit.
 # Todo only supports owner update to check for trusted members instead.
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out repository code
-        uses: actions/checkout@v4
-
-      - name: should not happen 111
-        run: echo 111 111 111
-
-#      - name: force fail
-#        run: exit 1
-
-      - name: Debug
-        run: |
-          echo ${{ github.event.type }}
-          echo ${{ github.event_name }}
-          echo ${{ github.ref }}
-          echo ${{ github.event.pull_request.head.ref }}
-          echo ${{ github.event.pull_request.base.ref }}
-
-      - name: Install dependencies
-        run: sudo apt-get install -y gcc
-
-      - name: Build functions.o
-        run: gcc -I. -c functions.c -o functions.o
-
-      - name: Build main.o
-        run: gcc -I. -c main.c -o main.o
-
-      - name: Build executable
-        run: gcc -I. functions.o main.o -o main_exe
-
-      - name: Upload artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: main_exe-artifact
-          path: main_exe
-          retention-days: 1
-
-  test:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - name: Download artifact
-        uses: actions/download-artifact@v4
-        with:
-          name: main_exe-artifact
-
-      - name: Grant execution privilege and run test
-        run: chmod 770 ./main_exe && ./main_exe
-
   deploy:
     needs: test
     runs-on: ubuntu-latest
