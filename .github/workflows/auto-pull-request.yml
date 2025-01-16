@@ -13,11 +13,12 @@ jobs:
     runs-on: ubuntu-latest
 #    if: ${{ github.actor == github.repository_owner }}
     steps:
-      - name: 'Create or update, close, then reopen pull request'
+      - name: 'Create pull request'
         uses: actions/github-script@v6
         with:
           github-token: ${{ secrets.CICD_REAL2 }}
           script: |
+            console.log("NEW INFO!!\n");
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
               owner: owner,
