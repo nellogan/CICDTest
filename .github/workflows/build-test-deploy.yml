@@ -4,7 +4,7 @@ name: build-test-deploy
 permissions: write-all
 
 env:
-  GITHUB_TOKEN: ${{ secrets.COMMIT_KEY }}
+  GITHUB_ssh-key: ${{ secrets.COMMIT_KEY }}
   PR_NUMBER: ${{ github.event.number }}
 
 on:
@@ -28,7 +28,7 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
         with:
-          token: ${{ secrets.COMMIT_KEY }}
+          ssh-key: ${{ secrets.COMMIT_KEY }}
 
       - name: PR NUMBER CHECK
         uses: actions/github-script@v6
