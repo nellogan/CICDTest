@@ -27,9 +27,9 @@ jobs:
           NUM=$(git diff ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} -- .github/ | wc -m)
           if [ "$NUM" -ne 0 ]
           then
-            echo "workflow changes detected!! failing!" ; exit 1 
+            echo "Changes detected in .github/ directory!! failing!" ; exit 1 
           else
-            echo "No workflow changes detected."
+            echo "No changes detected in .github/ directory, proceeding with build."
           fi
 
   build:
