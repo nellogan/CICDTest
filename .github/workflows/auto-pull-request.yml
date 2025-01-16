@@ -24,12 +24,12 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
-#        with:
-#          ssh-key: ${{ secrets.COMMIT_KEY }}
 
       - name: 'Create or update, close, then reopen pull request'
         uses: actions/github-script@v6
         with:
+#          github-token: ${{ secrets.CICDMEME }}
+          ssh-key: ${{ secrets.COMMIT_KEY }}
           script: |
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
