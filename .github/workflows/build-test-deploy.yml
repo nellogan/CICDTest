@@ -75,17 +75,8 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-#    permissions: write-all
-#    if: ${{ github.actor == github.repository_owner }} # todo trusted members instead of only owner.
-#    permissions: write-all
-
-#    permissions:
-#      pull-requests: write
-#      contents: write
 
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
 
       - name: 'Merge pull request'
         uses: actions/github-script@v6
