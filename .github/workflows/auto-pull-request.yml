@@ -9,7 +9,7 @@ on:
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
 jobs:
-  open-pull-request:
+  open-or-update-pull-request:
     runs-on: ubuntu-latest
 #    if: ${{ github.actor == github.repository_owner }}
     steps:
@@ -46,10 +46,9 @@ jobs:
                 repo: repo,
                 issue_number: existingPR.number,
                 body: [
-                  `Updated by Job ${ context.job }, author: ${{ github.actor }}`,
+                  `Updated by Job ${ context.job }`, 
+                  'author: ${{ github.actor }}',
                   'Commit message: ${{ github.event.head_commit.message }}',
                 ].join('\n'),
               });
             }
-          
-
