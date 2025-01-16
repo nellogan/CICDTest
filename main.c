@@ -30,6 +30,6 @@ int main(void)
 
     assert( 1 == 1 );
 
-    printf("hello from main.c, 644\n");
+    printf("hello from main.c, 646\n");
     return 0;
 }
