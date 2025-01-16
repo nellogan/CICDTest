@@ -11,9 +11,9 @@ on:
   pull_request:
     base:
       - main
-#  push:
-#    branches:
-#      - main
+  push:
+    branches:
+      - main
 
 
 # todo preliminary-check
@@ -61,6 +61,8 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.COMMIT_KEY }}
 
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -77,9 +79,15 @@ jobs:
 #    if: ${{ github.actor == github.repository_owner }} # todo trusted members instead of only owner.
     permissions: write-all
     steps:
+      - name: checkout repo
+        uses: actions/checkout@v4
+        with:
+          ssh-key: ${{ secrets.COMMIT_KEY }}
+
       - name: 'Merge pull request'
         uses: actions/github-script@v6
         with:
+          ssh-key: ${{ secrets.COMMIT_KEY }}
           script: |
             const { repo, owner } = context.repo;
             const merge_pr = await github.rest.pulls.merge({
