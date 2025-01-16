@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verify that workflows have not changed
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           # checkout full tree
           fetch-depth: 0
@@ -32,7 +32,7 @@ jobs:
           echo github.event.pull_request.base.sha ${{ github.event.pull_request.base.sha }}
           echo github.event.pull_request.head.sha ${{ github.event.pull_request.head.sha }}
           NUM=$(git diff --name-only ${{ github.event.pull_request.base.sha }} \ 
-          ${{ github.event.pull_request.head.sha }} -- .github/workflows/ | wc -c)
+          ${{ github.event.pull_request.head.sha }} -- ./.github/workflows/ | wc -c)
           echo number of bytes changed in .github/workflows/ $NUM
           if [ "$NUM" -ne 0 ]
           then
