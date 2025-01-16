@@ -39,9 +39,6 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Install dependencies
-        run: sudo apt-get install -y gcc
-
       - name: Build functions.o
         run: gcc -I. -c functions.c -o functions.o
 
@@ -88,4 +85,3 @@ jobs:
               commit_message: 'commit message placeholder',
               merge_method: "merge"
             });
-            console.log("merge_pr: ", merge_pr);
