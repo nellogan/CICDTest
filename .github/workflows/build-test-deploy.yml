@@ -107,6 +107,3 @@ jobs:
               merge_method: "merge"
             });
             console.log("merge_pr: ", merge_pr);
-
-      - name: call workflow
-        uses: ./.github/workflows/build-test-deploy.yml
