@@ -28,6 +28,6 @@ int main(void)
     add_test();
     mul_test();
 
-    printf("hello from main.c, 552\n");
+    printf("hello from main.c, 553\n");
     return 0;
 }
