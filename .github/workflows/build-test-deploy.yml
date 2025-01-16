@@ -25,8 +25,12 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: should not happen 123
-        run: echo 123 123 123
+      - name: should not happen 456
+        run: echo 456 456 456
+
+#      - name: force fail
+#        run: exit 1
+
 
       - name: Debug
         run: |
