@@ -11,9 +11,11 @@ on:
   pull_request:
     branches:
       - main
-  push:
-    branches:
+    base:
       - main
+#  push:
+#    branches:
+#      - main
 
 
 # todo preliminary-check
