@@ -16,8 +16,8 @@ jobs:
   open-pull-request:
     runs-on: ubuntu-latest
 #    if: ${{ github.actor == github.repository_owner }}
-    permissions:
-      pull-requests: write
+#    permissions:
+#      pull-requests: write
 #      contents: write
 
     steps:
