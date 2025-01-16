@@ -30,6 +30,15 @@ jobs:
         with:
           ssh-key: ${{ secrets.COMMIT_KEY }}
 
+
+      - name: check if pull_request was trigger
+        if: ${{ github.event_name == 'pull_request' }}
+        run: echo pull_request was trigger
+
+      - name: check if push was trigger
+        if: ${{ github.event_name == 'push' }}
+        run: echo push was trigger
+
       - name: PR NUMBER CHECK
         uses: actions/github-script@v6
         with:
