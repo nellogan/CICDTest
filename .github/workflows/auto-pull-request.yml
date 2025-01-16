@@ -18,7 +18,7 @@ jobs:
         with:
           script: |
             const { repo, owner } = context.repo;
-            console.log("repo", repo);
+            console.log("context", context);
             console.log("\n\n context.repo.contributors", context.repo.contributors);
         
 
