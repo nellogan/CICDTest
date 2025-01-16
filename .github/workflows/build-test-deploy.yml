@@ -83,7 +83,7 @@ jobs:
 #    if: ${{ github.actor == github.repository_owner }} # todo trusted members instead of only owner.
 #    permissions: write-all
     permissions:
-      pull-requests: write
+#      pull-requests: read
       contents: write
 
     steps:
