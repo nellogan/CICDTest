@@ -35,7 +35,7 @@ jobs:
           echo number of bytes changed in .github/workflows/ $NUM
           if [ "$NUM" -ne 0 ]
           then
-            echo "workflow changes detected!! failing!" ; exit 1 
+            echo "workflow changes detected!! failing!" ; exit 2 
           else
             echo "No workflow changes detected."
           fi
