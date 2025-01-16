@@ -36,6 +36,8 @@ jobs:
     needs: verify-safe
     runs-on: ubuntu-latest
     steps:
+      # Since pull_request_target uses the base branch for its context (main in this case), use actions/checkout to
+      # checkout the new code in the pull request for building/testing.
       - name: Check out repository code
         uses: actions/checkout@v4
         with:
@@ -72,7 +74,6 @@ jobs:
   deploy:
     needs: test
     runs-on: ubuntu-latest
-
     steps:
       - name: 'Merge pull request'
         uses: actions/github-script@v7
