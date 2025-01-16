@@ -24,6 +24,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Verify that workflows have not changed
+        uses: actions/checkout@v2
+        with:
+          # checkout full tree
+          fetch-depth: 0
         run: |
           echo github.event.pull_request.base.sha ${{ github.event.pull_request.base.sha }}
           echo github.event.pull_request.head.sha ${{ github.event.pull_request.head.sha }}
