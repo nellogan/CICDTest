@@ -67,8 +67,6 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
-        with:
-          ssh-key: ${{ secrets.COMMIT_KEY }}
 
       - name: Download artifact
         uses: actions/download-artifact@v4
@@ -87,8 +85,6 @@ jobs:
     steps:
       - name: checkout repo
         uses: actions/checkout@v4
-        with:
-          ssh-key: ${{ secrets.COMMIT_KEY }}
 
       - name: 'Merge pull request'
         uses: actions/github-script@v6
