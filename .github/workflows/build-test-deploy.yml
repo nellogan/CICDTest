@@ -4,9 +4,14 @@ env:
   PR_NUMBER: ${{ github.event.number }}
 
 on:
-  pull_request_target:
+  pull_request:
     branches:
       - main
+
+#  pull_request_target:
+#    branches:
+#      - main
+
 
 # todo preliminary-check
 #      if: ${{ github.actor != github.repository_owner }} # todo trusted members instead of only owner.
