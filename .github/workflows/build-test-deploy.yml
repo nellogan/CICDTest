@@ -11,8 +11,8 @@ on:
   pull_request:
     branches:
       - main
-    base:
-      - main
+#    base:
+#      - main
 #  push:
 #    branches:
 #      - main
