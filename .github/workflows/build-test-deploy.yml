@@ -4,13 +4,13 @@ env:
   PR_NUMBER: ${{ github.event.number }}
 
 on:
-#  pull_request:
-#    branches:
-#      - main
-
-  pull_request_target:
+  pull_request:
     branches:
       - main
+
+#  pull_request_target:
+#    branches:
+#      - main
 
 
 # todo preliminary-check
@@ -25,11 +25,11 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: should not happen 789
-        run: echo 789 789 789
+      - name: should not happen 111
+        run: echo 111 111 111
 
-      - name: force fail
-        run: exit 1
+#      - name: force fail
+#        run: exit 1
 
       - name: Debug
         run: |
