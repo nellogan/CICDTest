@@ -28,8 +28,8 @@ int main(void)
     add_test();
     mul_test();
 
-    assert( 1 == 1 );
+    assert( 1 == 0 );
 
-    printf("hello from main.c, 646\n");
+    printf("hello from main.c, 647\n");
     return 0;
 }
