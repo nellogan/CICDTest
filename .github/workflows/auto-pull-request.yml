@@ -46,7 +46,7 @@ jobs:
                 repo: repo,
                 issue_number: existingPR.number,
                 body: [
-                  'Updated by Job ${context.job}, author: ${{ github.actor }}',
+                  'Updated by Job ${{ context.job }}, author: ${{ github.actor }}',
                   'Commit message: ${{ github.event.head_commit.message }}',
                 ].join('\n'),
               });
