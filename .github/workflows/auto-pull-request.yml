@@ -21,8 +21,8 @@ jobs:
 #      contents: write
 
     steps:
-      - name: checkout repo
-        uses: actions/checkout@v4
+#      - name: checkout repo
+#        uses: actions/checkout@v4
 
       - name: 'Create or update, close, then reopen pull request'
         uses: actions/github-script@v6
