@@ -31,7 +31,9 @@ jobs:
       - run: |
           echo github.event.pull_request.base.sha ${{ github.event.pull_request.base.sha }}
           echo github.event.pull_request.head.sha ${{ github.event.pull_request.head.sha }}
-          NUM=$(git diff ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }} | wc -c)
+          DIFF=$(git diff ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }})
+          echo DIFF $DIFF
+          NUM=$(DIFF | wc -c)
           echo number of bytes changed in .github/workflows/ $NUM
           if [ "$NUM" -ne 0 ]
           then
@@ -54,13 +56,13 @@ jobs:
 #      - name: force fail
 #        run: exit 1
 
-      - name: Debug
-        run: |
-          echo ${{ github.event.type }}
-          echo ${{ github.event_name }}
-          echo ${{ github.ref }}
-          echo ${{ github.event.pull_request.head.ref }}
-          echo ${{ github.event.pull_request.base.ref }}
+#      - name: Debug
+#        run: |
+#          echo ${{ github.event.type }}
+#          echo ${{ github.event_name }}
+#          echo ${{ github.ref }}
+#          echo ${{ github.event.pull_request.head.ref }}
+#          echo ${{ github.event.pull_request.base.ref }}
 
       - name: Install dependencies
         run: sudo apt-get install -y gcc
