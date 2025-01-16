@@ -38,6 +38,8 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+#        with:
+#          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Build functions.o
         run: gcc -I. -c functions.c -o functions.o
