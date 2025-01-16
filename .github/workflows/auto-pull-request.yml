@@ -12,12 +12,11 @@ jobs:
   open-pull-request:
     runs-on: ubuntu-latest
 #    if: ${{ github.actor == github.repository_owner }}
-    permissions: write-all
     steps:
       - name: 'Create or update, close, then reopen pull request'
         uses: actions/github-script@v6
         with:
-          github-token: ${{ secrets.CICD_REAL3 }}
+          github-token: ${{ secrets.CICD_REAL2 }}
           script: |
             const { repo, owner } = context.repo;
             const pulls = await github.rest.pulls.list({
