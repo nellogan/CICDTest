@@ -16,8 +16,7 @@ jobs:
     steps:
       - name: 'Create or update, close, then reopen pull request'
         uses: actions/github-script@v6
-        permissions:
-          pull-requests: write
+        permissions: write-all
         with:
           github-token: ${{ secrets.CICD_REAL3 }}
           script: |
