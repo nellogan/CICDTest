@@ -27,7 +27,7 @@ jobs:
         run: |
           echo github.event.pull_request.base ${{ github.event.pull_request.base }}
           echo github.event.pull_request.head ${{ github.event.pull_request.head }}
-          NUM=$(git diff --name-only origin/main origin/${github.event.pull_request.head}  | wc -c)
+          NUM=$(git diff --name-only ${{ github.event.pull_request.base }} ${{ github.event.pull_request.head }}  | wc -c)
           echo number of bytes changed in .github/workflows/ $NUM
           if [ "$NUM" -ne 0 ]
           then
