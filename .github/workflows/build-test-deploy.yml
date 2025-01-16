@@ -23,6 +23,13 @@ jobs:
       - name: should not happen
         run: echo ^^^^^^^^^^^^^^ SHOULD NOT HAPPEN! ^^^^^^^^^^^^^^
 
+      - name: Debug
+        run: |
+          echo ${{ github.event_name }}
+          echo ${{ github.ref }}
+          echo ${{ github.event.pull_request.head.ref }}
+          echo ${{ github.event.pull_request.base.ref }}
+
       - name: Install dependencies
         run: sudo apt-get install -y gcc
 
