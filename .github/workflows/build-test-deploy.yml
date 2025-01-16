@@ -11,7 +11,9 @@ on:
   pull_request:
     branches:
       - main
-    types: [ assigned, unassigned, labeled, unlabeled, opened, edited, closed, reopened, synchronize, converted_to_draft, locked, unlocked, enqueued, dequeued, milestoned, demilestoned, ready_for_review, review_requested, review_request_removed, auto_merge_enabled, auto_merge_disabled ]
+  workflow_call:
+
+#    types: [ assigned, unassigned, labeled, unlabeled, opened, edited, closed, reopened, synchronize, converted_to_draft, locked, unlocked, enqueued, dequeued, milestoned, demilestoned, ready_for_review, review_requested, review_request_removed, auto_merge_enabled, auto_merge_disabled ]
 #    base:
 #      - main
 #  push:
@@ -105,3 +107,7 @@ jobs:
               merge_method: "merge"
             });
             console.log("merge_pr: ", merge_pr);
+
+      - name: call workflow
+        uses: ./.github/workflows/build-test-deploy.yml
+        secrets: inherit
