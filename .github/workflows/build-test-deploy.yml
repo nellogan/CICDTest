@@ -4,13 +4,13 @@ env:
   PR_NUMBER: ${{ github.event.number }}
 
 on:
-#  pull_request:
-#    branches:
-#      - main
-
-  pull_request_target:
+  pull_request:
     branches:
       - main
+
+#  pull_request_target:
+#    branches:
+#      - main
 
 
 # todo preliminary-check
