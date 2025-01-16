@@ -1,7 +1,5 @@
 name: auto-pull-request
 
-if: ${{ github.actor != github.repository_owner }}
-
 on:
   push:
     branches:
@@ -11,11 +9,12 @@ on:
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
 jobs:
+  if: ${{ github.actor == github.repository_owner }}
   open-or-update-pull-request:
     # If using a team based structure instead of a solo developer.
     # if: ${{ github.actor == github.team_slug && github.actor.permissions == approved }}
 
-#    if: ${{ github.actor != github.repository_owner }}
+#    if: ${{ github.actor == github.repository_owner }}
 
     runs-on: ubuntu-latest
     steps:
