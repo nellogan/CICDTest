@@ -18,9 +18,6 @@ jobs:
         with:
           script: |
             console.log("context.repo.collaborators", ${{ context.repo.collaborators }});
-
-        run: |
-          echo collaborators 
         
 
       - name: 'Create pull request'
