@@ -33,7 +33,7 @@ jobs:
           echo github.event.pull_request.head.sha ${{ github.event.pull_request.head.sha }}
           DIFF=$(git diff ${{ github.event.pull_request.base.sha }}..${{ github.event.pull_request.head.sha }})
           echo DIFF $DIFF
-          NUM=$(DIFF | wc -c)
+          NUM=$(echo "$DIFF" | wc -l)
           echo number of bytes changed in .github/workflows/ $NUM
           if [ "$NUM" -ne 0 ]
           then
