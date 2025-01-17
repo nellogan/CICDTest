@@ -75,7 +75,8 @@ jobs:
   trigger-build-test-deploy-workflow-run:
     if: ${{ github.actor == github.repository_owner }}
     runs-on: ubuntu-latest
-    uses: nellogan/CICDTest/.github/workflows/build-test-deploy-workflow-run.yml@main
-    with:
-      PR_NUMBER: 337
+    steps:
+      uses: nellogan/CICDTest/.github/workflows/build-test-deploy-workflow-run.yml@main
+      with:
+        PR_NUMBER: 338
 #          PR_NUMBER: ${{ process.env.PR_NUMBER }}

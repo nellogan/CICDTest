@@ -14,9 +14,9 @@ on:
 #  pull_request_review:
 #    types: [ submitted, edited ]
 #    workflows: [ "auto-pull-request", "review-accepted" ]
-  pull_request_target:
-    branches:
-      - main
+#  pull_request_target:
+#    branches:
+#      - main
 
 
 # todo preliminary-check
