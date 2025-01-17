@@ -14,7 +14,7 @@ jobs:
     # If using a team based structure instead of a solo developer.
     # if: ${{ github.actor == github.team_slug && github.actor.permissions == approved }}
 
-    if: ${{ github.actor != github.repository_owner }}
+    if: ${{ github.actor == github.repository_owner }}
 
     runs-on: ubuntu-latest
     steps:
@@ -33,9 +33,11 @@ jobs:
               base: 'main',
               state: 'open',
             });
-          
+            
+            let pr_object;
+            
             if (pulls.data.length < 1) {
-              await github.rest.pulls.create({
+              pr_object = await github.rest.pulls.create({
                 title: 'Automatically generated pull request.',
                 owner: owner,
                 repo: repo,
@@ -49,7 +51,7 @@ jobs:
               });
             } else {
               const existingPR = pulls.data[0];
-              await github.rest.issues.createComment({
+              pr_object = await github.rest.issues.createComment({
                 owner: owner,
                 repo: repo,
                 issue_number: existingPR.number,
@@ -60,9 +62,10 @@ jobs:
                 ].join('\n'),
               });
             }
-            const pr_number = process.env.PR_NUMBER;
-            console.log("existingPR.number: ", existingPR.number);
-            console.log("checking pr_number: ", pr_number);
+            console.log("pr_object: ", pr_object);
+
+#            const pr_number = process.env.PR_NUMBER;
+#            console.log("checking pr_number: ", pr_number);
 
 #      - name: Trigger build-test-deploy-workflow-run
 #        uses: ./.github/workflows/build-test-deploy-workflow.yml
