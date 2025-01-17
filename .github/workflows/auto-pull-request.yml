@@ -21,8 +21,6 @@ jobs:
       - name: 'Create pull request'
         uses: actions/github-script@v7
         with:
-          id: set-pr-number
-          result-encoding: string
 #          github-token: ${{ secrets.CICD_REAL2 }}
           script: |
             const { repo, owner } = context.repo;
@@ -35,6 +33,7 @@ jobs:
             });
             
             let pr_object;
+            let pr_number = 0;
             
             if (pulls.data.length < 1) {
               pr_object = await github.rest.pulls.create({
@@ -49,6 +48,7 @@ jobs:
                   'Commit message: ${{ github.event.head_commit.message }}',
                 ].join('\n'),
               });
+              pr_number = pr_object.data.number;
             } else {
               const existingPR = pulls.data[0];
               pr_object = await github.rest.issues.createComment({
@@ -61,8 +61,9 @@ jobs:
                   'Commit message: ${{ github.event.head_commit.message }}',
                 ].join('\n'),
               });
+              pr_number = existingPR.number;
             }
-            console.log("pr_object: ", pr_object);
+            console.log("pr_number: ", pr_number);
 
 #            const pr_number = process.env.PR_NUMBER;
 #            console.log("checking pr_number: ", pr_number);
