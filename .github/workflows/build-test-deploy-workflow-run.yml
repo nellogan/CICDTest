@@ -4,6 +4,16 @@ env:
   PR_NUMBER: ${{ github.event.number }}
 
 on:
+  workflow_call:
+    inputs:
+      PR_NUMBER:
+        required: true
+        type: string
+
+#    types: [ completed ]
+#  pull_request_review:
+#    types: [ submitted, edited ]
+#    workflows: [ "auto-pull-request", "review-accepted" ]
   pull_request_target:
     branches:
       - main
@@ -76,7 +86,6 @@ jobs:
     # if: ${{ github.actor == github.team_slug && github.actor.permissions == approved }}
 
     if: ${{ github.actor != github.repository_owner }}
-
     needs: test
     runs-on: ubuntu-latest
     steps:

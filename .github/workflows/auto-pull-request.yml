@@ -1,5 +1,6 @@
 name: auto-pull-request
 
+# All branches except for main.
 on:
   push:
     branches:
@@ -13,13 +14,15 @@ jobs:
     # If using a team based structure instead of a solo developer.
     # if: ${{ github.actor == github.team_slug && github.actor.permissions == approved }}
 
-#    if: ${{ github.actor == github.repository_owner }}
+    if: ${{ github.actor != github.repository_owner }}
 
     runs-on: ubuntu-latest
     steps:
       - name: 'Create pull request'
         uses: actions/github-script@v7
         with:
+          id: set-pr-number
+          result-encoding: string
 #          github-token: ${{ secrets.CICD_REAL2 }}
           script: |
             const { repo, owner } = context.repo;
@@ -57,3 +60,11 @@ jobs:
                 ].join('\n'),
               });
             }
+            const pr_number = process.env.PR_NUMBER;
+            console.log("existingPR.number: ", existingPR.number);
+            console.log("checking pr_number: ", pr_number);
+
+#      - name: Trigger build-test-deploy-workflow-run
+#        uses: ./.github/workflows/build-test-deploy-workflow.yml
+#        with:
+#          PR_NUMBER: ${{ process.env.PR_NUMBER }}
