@@ -28,6 +28,10 @@ jobs:
   verify-safe:
     runs-on: ubuntu-latest
     steps:
+      - name: See if env var was passed
+        run: echo "event name is:" ${{ github.event_name }}, "event type is:" ${{ github.event.action }} "inputs.PR_NUMBER is" ${{ inputs.PR_NUMBER }}
+
+
       - name: Verify that workflows have not changed
         uses: actions/checkout@v4
         with:
