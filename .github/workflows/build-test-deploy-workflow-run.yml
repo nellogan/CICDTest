@@ -5,10 +5,10 @@ env:
 
 on:
   workflow_call:
-    inputs:
-      PR_NUMBER:
-        required: true
-        type: string
+#    inputs:
+#      PR_NUMBER:
+#        required: true
+#        type: string
 
 #    types: [ completed ]
 #  pull_request_review:
