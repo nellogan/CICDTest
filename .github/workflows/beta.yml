@@ -4,6 +4,7 @@ on:
   workflow_call:
     inputs:
       my_site:
+        default: 'default string'
         type: 'string'
         required: true
 
