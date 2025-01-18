@@ -33,11 +33,3 @@ jobs:
           script: |
             const { repo, owner } = context.repo;
 
-  my-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Print data passed from workflow_caller
-        run: |
-          echo "my_site: ${{ inputs.my_site }}"
-          echo "fake passed_env: $PR_NUMBER"
-          echo "fake passed_env2: ${{ inputs.passed_env2 }}"
