@@ -16,5 +16,5 @@ jobs:
     uses: nellogan/CICDTest/.github/workflows/beta.yml@main
     with:
       my_site: 'mysite.com'
-      passed_env: $FAKE_ENV
-      passed_env2: $FAKE_ENV2
+      passed_env: "$FAKE_ENV"
+      passed_env2: "$FAKE_ENV2"
