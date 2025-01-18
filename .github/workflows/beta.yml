@@ -23,7 +23,7 @@ jobs:
           submodules: true
         timeout-minutes: 3
       - name: "Debug: Check passed string."
-        run: echo site_alias ${{ inputs.site_alias }}
+        run: echo site_alias ${{ inputs.my_site }}
         env:
-          SITE_ALIAS: ${{ inputs.site_alias }}
+          SITE_ALIAS: ${{ inputs.my_site }}
 
