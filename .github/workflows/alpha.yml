@@ -1,0 +1,14 @@
+name: auto-pull-request
+
+# All branches except for main.
+on:
+  push:
+    branches:
+      - '**'
+      - '!main'
+
+jobs:
+  launch_beta:
+    uses: ./.github/workflows/beta.yml
+    with:
+      site_alias: 'mysite'

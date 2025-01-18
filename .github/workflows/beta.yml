@@ -1,0 +1,28 @@
+name: beta
+
+on:
+  workflow_call:
+    inputs:
+      my_site:
+        type: 'string'
+        required: true
+
+
+jobs:
+  pa11y:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: "Check out this repo and submodules."
+        uses: actions/checkout@v4.1.1
+        with:
+          lfs: false
+          submodules: true
+        timeout-minutes: 3
+      - name: "Debug: Check pa11y config."
+        run: echo site_alias "$SITE_ALIAS"
+        env:
+          SITE_ALIAS: ${{ inputs.site_alias }}
+
