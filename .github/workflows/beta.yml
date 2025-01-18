@@ -4,26 +4,13 @@ on:
   workflow_call:
     inputs:
       my_site:
-        default: 'default string'
-        type: 'string'
+        type: string
         required: true
 
-
 jobs:
-  beta-job:
+  my-job:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        shell: bash
     steps:
-      - name: "Check out this repo and submodules."
-        uses: actions/checkout@v4.1.1
-        with:
-          lfs: false
-          submodules: true
-        timeout-minutes: 3
-      - name: "Debug: Check passed string."
-        run: echo site_alias "${{ inputs.my_site }}"
-        env:
-          SITE_ALIAS: ${{ inputs.my_site }}
-
+      - name: Print data passed from workflow_caller
+        run: |
+          echo "passed data: ${{ inputs.my_site }}"
