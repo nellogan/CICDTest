@@ -6,6 +6,11 @@ on:
     branches:
       - '**'
       - '!main'
+    workflow_call:
+      inputs:
+        PR_NUMBER:
+          required: true
+          type: string
 
 # Automatically open a pull request when a trusted member pushes.
 # Todo only supports owner update to check for trusted members instead.
@@ -74,10 +79,7 @@ jobs:
 
   trigger-build-test-deploy-workflow-run:
     if: ${{ github.actor == github.repository_owner }}
-    runs-on: ubuntu-latest
-    steps:
-      - name: do it
-        uses: nellogan/CICDTest/.github/workflows/build-test-deploy-workflow-run.yml@main
-        with:
-        PR_NUMBER: 338
+    uses: nellogan/CICDTest/.github/workflows/pull-beta.yml@main
+    with:
+      PR_NUMBER: 338
 #          PR_NUMBER: ${{ process.env.PR_NUMBER }}
