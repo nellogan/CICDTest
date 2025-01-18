@@ -78,7 +78,6 @@ jobs:
 
 
   trigger-build-test-deploy-workflow-run:
-    if: ${{ github.actor == github.repository_owner }}
     uses: nellogan/CICDTest/.github/workflows/pull-beta.yml@main
     with:
       PR_NUMBER: 338
