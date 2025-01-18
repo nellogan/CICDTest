@@ -23,8 +23,9 @@ jobs:
     steps:
       - name: doer
         uses: actions/github-script@v7
-        run: |
-          process.env.PR_NUMBER = pr_number;
+        with:
+          script: |
+            process.env.PR_NUMBER = pr_number;
 
   my-job:
     runs-on: ubuntu-latest
