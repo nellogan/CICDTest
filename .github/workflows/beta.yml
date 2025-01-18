@@ -6,10 +6,10 @@ on:
       my_site:
         type: string
         required: true
-      FAKE_ENV:
+      passed_env:
         type: string
         required: true
-      FAKE_ENV2:
+      passed_env2:
         type: string
         required: true
 
@@ -22,5 +22,5 @@ jobs:
       - name: Print data passed from workflow_caller
         run: |
           echo "my_site: ${{ inputs.my_site }}"
-          echo "fake env: ${{ inputs.FAKE_ENV }}"
-          echo "fake env2: ${{ inputs.FAKE_ENV2 }}"
+          echo "fake passed_env: ${{ inputs.passed_env }}"
+          echo "fake passed_env2: ${{ inputs.passed_env2 }}"
