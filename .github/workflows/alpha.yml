@@ -9,6 +9,6 @@ on:
 
 jobs:
   launch_beta:
-    uses: ./.github/workflows/beta.yml
+    uses: nellogan/CICDTest/.github/workflows/beta.yml@main
     with:
       site_alias: 'mysite'
