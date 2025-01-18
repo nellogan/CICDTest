@@ -20,4 +20,4 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: 'beta'
-        run: echo check beta called PR_NUMBER "$PR_NUMBER"
+        run: echo check beta called PR_NUMBER "${{ inputs.release_type }}"
