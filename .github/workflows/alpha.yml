@@ -17,4 +17,5 @@ jobs:
     with:
       my_site: 'mysite.com'
       passed_env: "123"
+      passed_env2: "999"
 #      passed_env2: "$FAKE_ENV2"
