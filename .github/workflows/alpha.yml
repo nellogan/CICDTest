@@ -11,4 +11,4 @@ jobs:
   launch_beta:
     uses: nellogan/CICDTest/.github/workflows/beta.yml@main
     with:
-      site_alias: 'mysite'
+      my_site: 'mysite'
