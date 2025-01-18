@@ -80,5 +80,5 @@ jobs:
   trigger-build-test-deploy-workflow-run:
     uses: nellogan/CICDTest/.github/workflows/build-test-deploy-workflow-run.yml@main
     with:
-      PR_NUMBER: 338
+      PR_NUMBER: process.env.PR_NUMBER
 #          PR_NUMBER: ${{ process.env.PR_NUMBER }}
