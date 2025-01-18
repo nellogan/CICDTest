@@ -5,18 +5,18 @@ env:
 
 on:
   workflow_call:
-    inputs:
-      PR_NUMBER:
-        required: true
-        type: string
+#    inputs:
+#      PR_NUMBER:
+#        required: true
+#        type: string
 
 #    types: [ completed ]
 #  pull_request_review:
 #    types: [ submitted, edited ]
 #    workflows: [ "auto-pull-request", "review-accepted" ]
-  pull_request_target:
-    branches:
-      - main
+#  pull_request_target:
+#    branches:
+#      - main
 
 
 # todo preliminary-check
