@@ -22,7 +22,7 @@ jobs:
           lfs: false
           submodules: true
         timeout-minutes: 3
-      - name: "Debug: Check pa11y config."
+      - name: "Debug: Check passed string."
         run: echo site_alias ${{ inputs.site_alias }}
         env:
           SITE_ALIAS: ${{ inputs.site_alias }}
