@@ -10,7 +10,7 @@ on:
 
 
 jobs:
-  pa11y:
+  beta-job:
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -23,7 +23,7 @@ jobs:
           submodules: true
         timeout-minutes: 3
       - name: "Debug: Check pa11y config."
-        run: echo site_alias "$SITE_ALIAS"
+        run: echo site_alias ${{ inputs.site_alias }}
         env:
           SITE_ALIAS: ${{ inputs.site_alias }}
 
