@@ -13,14 +13,24 @@ on:
         type: string
         required: true
 
-
+env:
+  WTF: Monday
+  PR_NUMBER: 777
 
 jobs:
+  work1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: doer
+        uses: actions/github-script@v7
+        run: |
+          process.env.PR_NUMBER = pr_number;
+
   my-job:
     runs-on: ubuntu-latest
     steps:
       - name: Print data passed from workflow_caller
         run: |
           echo "my_site: ${{ inputs.my_site }}"
-          echo "fake passed_env: ${{ inputs.passed_env }}"
+          echo "fake passed_env: $PR_NUMBER"
           echo "fake passed_env2: ${{ inputs.passed_env2 }}"
